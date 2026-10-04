@@ -12,6 +12,12 @@ fp-info-cache
 # Generated reports and fabrication outputs
 erc*.json
 drc*.json
+erc*.rpt
+drc*.rpt
+placement-drc.rpt
+*.net
+*.dsn
+*.ses
 gerbers/
 fab/
 exports/
@@ -26,4 +32,3 @@ __pycache__/
 *.pyc
 .DS_Store
 Thumbs.db
-

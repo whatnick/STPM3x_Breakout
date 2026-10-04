@@ -47,7 +47,9 @@ field connector -> burden/divider/protection -> anti-alias network -> IC pin
 Use connector-side suffixes such as `_J` and IC-side signal names such as
 `VIP1`, `VIN1`, `IIP1`, and `IIN1`.
 
-## Mechanical scaffold
+## Mechanical formats
+
+The STPM33 and STPM34 reference scaffolds use:
 
 - 55 x 40 mm bench-board envelope.
 - 5.08 mm rounded corners.
@@ -59,10 +61,14 @@ Use connector-side suffixes such as `_J` and IC-side signal names such as
 - Board identity on F.SilkS.
 - URL, TAPR OHL notice, and `NOT ISOLATED` warning on B.SilkS.
 
-The common outline is intentionally larger than a breadboard-only module. It
-leaves room for sensor connectors, repeated conditioning lanes, readable
-labels, and probing. A compact derivative can follow after the reference
-breakouts are validated.
+The implemented STPM32 board uses the compact Whatnick breakout format:
+
+- 38.2 x 28.04 mm rounded outline.
+- One long-edge 1x12, 2.54 mm breadboard header.
+- Analog inputs enter through header pins; no screw terminals or audio jacks.
+- INT1, LED1, LED2, and CLKOUT/ZCR use underside test pads.
+- Separate AGND and DGND copper pours join through the three-pad net tie.
+- `NOT FOR DIRECT MAINS` and isolated-source warnings remain visible.
 
 ## Variant intent
 
@@ -70,7 +76,13 @@ breakouts are validated.
 
 - One voltage and one current channel.
 - Smallest BOM and lowest current consumption.
-- Target: single-phase CT/shunt/Rogowski development.
+- Implemented for a 100 A:50 mA current-output CT and isolated 9 VAC voltage
+  transformer.
+- 2.4 ohm differential burden gives 120 mV RMS at 100 A.
+- Symmetric 200 kohm / 2.49 kohm dividers give approximately 111 mV RMS at
+  9 VAC differential input.
+- Current and voltage anti-alias filters are approximately 4.8 kHz.
+- Target: compact single-phase metering and driver development.
 
 ### STPM33
 
@@ -94,4 +106,3 @@ breakouts are validated.
 - Final DRC: zero errors and zero unconnected items.
 - Purchasing fields are present on every sourced schematic symbol:
   `Manufacturer`, `MPN`, `Description`, `DigiKey`, and `Mouser`.
-

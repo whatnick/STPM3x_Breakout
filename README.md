@@ -67,13 +67,16 @@ These boards are intended as accessible bench-development platforms:
 - Space for channel-specific burden, divider, protection, and filtering
   networks.
 - 3.3 V host compatibility.
-- Mounting holes, readable channel labels, and room for probing.
+- Compact breadboard modules or larger bench boards according to channel count.
+- Readable safety labels and accessible test points.
 - Open KiCad 10 source and project-local STPM3x symbols.
 
-The current revision establishes the common mechanical projects, verified
-datasheet pin maps, package footprints, and design requirements. Electrical
-front ends will be completed per variant after selecting the intended sensor
-types, measurement ranges, and isolation strategy.
+The STPM32 variant now implements a complete compact front end for a
+100 A:50 mA current-output CT and an isolated 9 VAC transformer secondary. It
+uses a single 1x12 breadboard header, underside test pads, separate analog and
+digital ground pours, and no field-wiring connectors. The STPM33 and STPM34
+projects remain larger reference scaffolds until their sensor combinations are
+selected.
 
 ## Repository contents
 
