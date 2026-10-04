@@ -1,77 +1,102 @@
-# STPM3x Breakout
+# STPM3x Energy Metering Breakouts
 
-KiCad 10 hardware scaffolding for three STMicroelectronics energy-metering
-ASIC breakouts:
+Open-hardware development boards for the STMicroelectronics STPM32, STPM33,
+and STPM34 energy-metering ASIC family.
 
-- **STPM32** - one voltage and one current channel, QFN24L 4 x 4 mm.
-- **STPM33** - one voltage and two current channels, QFN32L 5 x 5 mm.
-- **STPM34** - two voltage and two current channels, QFN32L 5 x 5 mm.
+The STPM3x devices combine precision analog conversion with on-chip
+calculation of voltage, current, power, energy, and power-quality events. They
+support current transformers, shunts, and Rogowski coils, with SPI or UART
+host communication and CRC-protected data transfers.
 
-The projects follow the reusable workflows from
-[`whatnick/whatnick-energy-monitor-skills`](https://github.com/whatnick/whatnick-energy-monitor-skills):
-datasheet-first circuits, project-local metering symbols, separated analog and
-digital regions, rounded bench-board mechanics, four M2 mounting holes, a
-power netclass, and explicit ERC/DRC gates.
+This repository develops a consistent breakout family around all three channel
+configurations:
 
-## Repository layout
+| Board | Measurement channels | Best fit |
+|---|---|---|
+| **STPM32 Breakout** | 1 voltage + 1 current | Single-phase meters, smart appliances, and compact sensor development |
+| **STPM33 Breakout** | 1 voltage + 2 current | Phase/neutral monitoring, tamper detection, and dual-current experiments |
+| **STPM34 Breakout** | 2 voltage + 2 current | Split-phase systems, two independent circuits, and two-phase monitoring |
 
-```text
-hardware/
-  STPM32_Breakout/
-  STPM33_Breakout/
-  STPM34_Breakout/
-symbols/
-  STPM3x.kicad_sym
-docs/
-  design-requirements.md
-  pin-map.md
-scripts/
-  generate_scaffold.py
-```
+The STPM34 is the most capable member of this family, but it is not a complete
+three-phase meter by itself. Applications requiring three simultaneous voltage
+and current phases are better served by devices such as the ADE9000 or
+ATM90E36.
 
-Each project starts as a mechanically valid 55 x 40 mm bench breakout with
-5.08 mm corner radii, four M2 NPTH mounting holes, the correct IC package,
-analog/digital placement zones, and board markings. The schematics are left
-electrically empty until the sensor topology and isolation policy are selected;
-the verified device symbols are ready in the project-local symbol library.
+## Place in the Whatnick ecosystem
 
-## Generate the scaffold
+The Whatnick energy-monitoring ecosystem includes breakout boards and drivers
+for several metering architectures:
 
-Run with the KiCad 10 Python interpreter:
+- **ATM90E26** for established single-phase SPI metering.
+- **ATM90E32/ATM90E36** for three-phase monitoring.
+- **ADE7763 and ADE7816** for Analog Devices single- and multi-channel designs.
+- **ADE9000** for advanced polyphase metering and power-quality work.
+- **CS5464 and CS5490** for Cirrus Logic single-phase applications.
+- **MCP39F511 and MCP39F521** for Microchip calculation-engine devices.
+- **V9203 and V93xx** for additional polyphase and single-phase platforms.
+- **STPM3x** for a scalable STMicroelectronics family using a common register
+  model across single-, dual-current, and dual-channel applications.
 
-```powershell
-& "C:\Program Files\KiCad\10.0\bin\python.exe" .\scripts\generate_scaffold.py
-```
+The aim is not only to expose IC pins. Each breakout should provide a known
+hardware platform for driver development, calibration tools, sensor-interface
+experiments, waveform analysis, and comparison between metering ASIC families.
 
-## Validate
+## Intended software ecosystem
 
-```powershell
-$kicad = "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe"
+The three boards are intended to share one transport-independent STPM3x driver
+core with device-specific channel capabilities layered on top. Planned software
+support includes:
 
-Get-ChildItem .\hardware -Directory | ForEach-Object {
-    $name = $_.Name
-    & $kicad sch erc --format json --output "$($_.FullName)\erc.json" "$($_.FullName)\$name.kicad_sch"
-    & $kicad pcb drc --format json --output "$($_.FullName)\drc.json" "$($_.FullName)\$name.kicad_pcb"
-}
-```
+- Register definitions and typed configuration helpers.
+- SPI and UART transports.
+- CRC generation and checking.
+- RMS, power, energy, event, and status access.
+- Calibration and register-dump tools.
+- Arduino and Python/MicroPython-facing APIs.
+- Examples for CT, shunt, and Rogowski-coil measurements.
 
-## Design status
+Keeping a common API across STPM32, STPM33, and STPM34 will allow applications
+to move between board variants without maintaining three unrelated drivers.
 
-This repository is at **scaffold stage**. Before routing:
+## Hardware philosophy
 
-1. Select CT, shunt, or Rogowski sensing for each current channel.
-2. Select isolated low-voltage sensing or a documented mains-rated front end.
-3. Dimension dividers and burdens from the required measurement range.
-4. Confirm exposed-pad treatment with ST package/application guidance.
-5. Implement the datasheet decoupling, reference, clock, reset/enable, and
-   SPI/UART support circuits.
-6. Complete ERC, placement DRC, routing, final DRC, BOM sourcing, and 3D review.
+These boards are intended as accessible bench-development platforms:
 
-These boards are development instruments, not certified energy meters. They
-must not be connected to hazardous voltages without appropriately rated
-isolation, protection, fusing, enclosure, and electrical-safety practices.
+- Clearly separated analog sensor and digital host interfaces.
+- Exposed pulse, interrupt, synchronization, clock, and enable signals.
+- Space for channel-specific burden, divider, protection, and filtering
+  networks.
+- 3.3 V host compatibility.
+- Mounting holes, readable channel labels, and room for probing.
+- Open KiCad 10 source and project-local STPM3x symbols.
+
+The current revision establishes the common mechanical projects, verified
+datasheet pin maps, package footprints, and design requirements. Electrical
+front ends will be completed per variant after selecting the intended sensor
+types, measurement ranges, and isolation strategy.
+
+## Repository contents
+
+- [`hardware/STPM32_Breakout`](hardware/STPM32_Breakout) - single voltage and
+  current channel.
+- [`hardware/STPM33_Breakout`](hardware/STPM33_Breakout) - single voltage and
+  dual current channels.
+- [`hardware/STPM34_Breakout`](hardware/STPM34_Breakout) - dual voltage and
+  current channels.
+- [`symbols/STPM3x.kicad_sym`](symbols/STPM3x.kicad_sym) - project-local,
+  datasheet-verified symbols.
+- [`docs/pin-map.md`](docs/pin-map.md) - family pin and package comparison.
+- [`docs/design-requirements.md`](docs/design-requirements.md) - shared
+  electrical, mechanical, and safety requirements.
+
+## Safety
+
+These are development boards, not certified energy meters. They must not be
+connected directly to hazardous voltages without correctly rated isolation,
+protection, fusing, spacing, enclosure, and appropriate electrical-safety
+practices.
 
 ## License
 
-Hardware design files are released under the TAPR Open Hardware License 1.0.
-
+Hardware design files are released under the
+[TAPR Open Hardware License 1.0](LICENSE).
