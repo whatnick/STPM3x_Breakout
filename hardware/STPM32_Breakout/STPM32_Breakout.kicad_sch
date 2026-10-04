@@ -1,0 +1,19 @@
+(kicad_sch
+	(version 20250114)
+	(generator "stpm3x-scaffold")
+	(generator_version "1.0")
+	(uuid "6478b477-6a06-47b1-9f68-3d396cdf46f7")
+	(paper "A4")
+	(title_block
+		(title "STPM32 Breakout")
+		(company "Whatnick")
+		(comment 1 "Electrical scaffold: place verified STPM3x symbol and implement datasheet blocks")
+	)
+	(lib_symbols)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)
