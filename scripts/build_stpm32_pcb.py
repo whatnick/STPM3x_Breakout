@@ -199,6 +199,16 @@ PLACEMENT: dict[str, tuple[float, float, float, bool]] = {
     "SW1": (54.20, 34.20, 90, False),
 }
 
+STPM32_MODEL = "${KIPRJMOD}/models/step/STPM32_VQFN24_4x4_EP2.45.step"
+
+
+def replace_3d_model(footprint: pcbnew.FOOTPRINT, filename: str) -> None:
+    models = footprint.Models()
+    models.clear()
+    model = pcbnew.FP_3DMODEL()
+    model.m_Filename = filename
+    models.append(model)
+
 
 def add_footprints(
     board: pcbnew.BOARD,
@@ -223,6 +233,8 @@ def add_footprints(
         footprint.SetOrientationDegrees(rotation)
         footprint.Value().SetVisible(False)
         footprint.Reference().SetVisible(False)
+        if reference == "U1":
+            replace_3d_model(footprint, STPM32_MODEL)
         board.Add(footprint)
         if bottom:
             footprint.Flip(point(x, y), False)

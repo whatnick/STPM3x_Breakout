@@ -26,6 +26,7 @@ exports/
 *.pos
 *.step
 *.wrl
+!hardware/STPM32_Breakout/models/step/STPM32_VQFN24_4x4_EP2.45.step
 
 # Python and OS files
 __pycache__/
