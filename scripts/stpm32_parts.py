@@ -222,7 +222,7 @@ PARTS = (
     ),
 )
 
-NON_BOM_REFERENCES = ("NT1", "TP1", "TP2", "TP3", "TP4")
+NON_BOM_REFERENCES = ("NT1", "SJ1", "TP1", "TP2", "TP3", "TP4")
 
 
 def apply_part_metadata(schematic) -> None:

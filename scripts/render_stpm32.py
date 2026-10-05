@@ -46,7 +46,7 @@ def render(side: str, rotation: str) -> None:
             "--floor",
             "--perspective",
             "--zoom",
-            "1.15",
+            "1.05",
             "--rotate",
             rotation,
             str(BOARD),

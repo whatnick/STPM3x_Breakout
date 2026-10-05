@@ -196,6 +196,7 @@ PLACEMENT: dict[str, tuple[float, float, float, bool]] = {
     "C11": (46.80, 24.30, 90, False),
     "R11": (50.30, 38.20, 0, False),
     "R12": (44.80, 41.00, 0, False),
+    "SJ1": (54.50, 25.00, 90, True),
     "SW1": (54.20, 34.20, 90, False),
 }
 
@@ -315,7 +316,7 @@ def main() -> None:
     title = board.GetTitleBlock()
     title.SetTitle("STPM32 Energy Metering Breakout")
     title.SetCompany("Whatnick")
-    title.SetRevision("A")
+    title.SetRevision("B")
     title.SetComment(0, "Compact breadboard format; isolated 9 VAC and 100 A:50 mA CT")
     title.SetComment(1, "TAPR Open Hardware License 1.0")
 

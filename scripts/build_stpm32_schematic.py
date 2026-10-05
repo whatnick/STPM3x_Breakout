@@ -29,7 +29,7 @@ def main() -> None:
     schematic = ksa.create_schematic("STPM32_Breakout")
     schematic.set_title_block(
         title="STPM32 Energy Metering Breakout",
-        rev="A",
+        rev="B",
         company="Whatnick",
         comments={
             1: "Isolated 9 VAC voltage input and 100 A:50 mA current-output CT",
@@ -145,7 +145,7 @@ def main() -> None:
     two_pin("C13", "15p", (132.08, 63.50), "XTAL1", "DGND", capacitor=True)
     two_pin("C14", "15p", (149.86, 63.50), "XTAL2", "DGND", capacitor=True)
 
-    # Enable and interface-mode defaults: enabled and SPI unless overridden.
+    # Enable and interface-mode defaults: enabled and SPI unless reconfigured.
     two_pin("R11", "10k", (160.02, 55.88), "+3V3", "EN")
     add(
         "Switch:SW_Push",
@@ -156,7 +156,17 @@ def main() -> None:
     )
     net("SW1", "1", "EN")
     net("SW1", "2", "DGND")
-    two_pin("R12", "10k", (185.42, 55.88), "SCS", "DGND")
+    two_pin("R12", "10k", (185.42, 55.88), "SCS", "MODE_BIAS")
+    add(
+        "Connector_Generic:Conn_01x03",
+        "SJ1",
+        "SPI / UART",
+        (185.42, 68.58),
+        "Jumper:SolderJumper-3_P1.3mm_Bridged12_Pad1.0x1.5mm",
+    )
+    net("SJ1", "1", "DGND")
+    net("SJ1", "2", "MODE_BIAS")
+    net("SJ1", "3", "+3V3")
 
     # Current channel: header input, 2.4 ohm differential burden and LPF.
     two_pin("RB1", "2.4R", (55.88, 58.42), "CT_P", "CT_N")
@@ -252,7 +262,8 @@ def main() -> None:
         bold=True,
     )
     schematic.add_text(
-        "SCS is pulled low for SPI default; drive high before reset to select UART.",
+        "STPM32 supports SPI or UART; I2C is not supported.\n"
+        "SJ1 1-2 closed = SPI default. Cut 1-2 and bridge 2-3 for UART.",
         (147.32, 35.56),
         size=1.0,
     )

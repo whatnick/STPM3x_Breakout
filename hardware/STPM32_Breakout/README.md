@@ -21,8 +21,10 @@ STMicroelectronics STPM32 energy-metering ASIC.
 - **Voltage filter:** 1 kohm series and 33 nF shunt on each differential leg,
   approximately 4.8 kHz.
 - **Clock:** 16 MHz crystal with 15 pF load capacitors.
-- **Interface default:** SCS pulled low for SPI; drive SCS high before reset to
-  select UART.
+- **Interface selector:** STPM32 supports SPI and UART, not I2C. SJ1 is a
+  three-pad solder jumper with pads 1-2 closed by default, weakly pulling SCS
+  low through R12 for SPI. For UART, cut the 1-2 bridge and solder 2-3 so R12
+  weakly pulls SCS high. The resistor preserves host control of SCS in SPI mode.
 
 At 9 VAC differential input, the voltage channel receives approximately
 111 mV RMS, or 157 mV peak. Both analog channels remain below the STPM32
