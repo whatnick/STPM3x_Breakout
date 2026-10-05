@@ -5,6 +5,8 @@ from pathlib import Path
 
 import kicad_sch_api as ksa
 
+from stpm32_parts import apply_part_metadata
+
 
 ROOT = Path(__file__).resolve().parents[1]
 SYMBOL_LIBRARY = ROOT / "symbols" / "STPM3x.kicad_sym"
@@ -255,6 +257,7 @@ def main() -> None:
         size=1.0,
     )
 
+    apply_part_metadata(schematic)
     schematic.save(OUTPUT)
     print(f"Wrote {OUTPUT}")
 

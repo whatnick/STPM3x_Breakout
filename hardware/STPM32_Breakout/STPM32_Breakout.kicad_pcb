@@ -5089,7 +5089,7 @@
 			)
 		)
 		(sheetfile "C:/Users/Tisham/Documents/kicad/MCP39F511_Breakout/MCP39F511_Breakout.kicad_sch")
-		(attr through_hole)
+		(attr through_hole exclude_from_pos_files exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_poly
 			(pts
@@ -5815,7 +5815,7 @@
 			)
 		)
 		(sheetfile "C:/Users/Tisham/Documents/kicad/MCP39F511_Breakout/MCP39F511_Breakout.kicad_sch")
-		(attr exclude_from_pos_files)
+		(attr exclude_from_pos_files exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_poly
 			(pts
