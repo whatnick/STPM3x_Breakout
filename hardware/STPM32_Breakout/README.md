@@ -71,6 +71,25 @@ python .\scripts\create_stpm32_qfn_step.py
 python .\scripts\render_stpm32.py
 ```
 
+## Gerber fabrication package
+
+Generate the KiCad 10 fabrication outputs with:
+
+```powershell
+python .\scripts\generate_stpm32_gerbers.py
+```
+
+The script runs ERC and DRC before exporting the two copper layers, solder
+masks, front and rear silkscreens, front paste, board outline, and separate
+plated/non-plated Excellon drill files. Outputs are written to:
+
+- `hardware/STPM32_Breakout/gerber/`
+- `hardware/STPM32_Breakout/gerber/STPM32_Breakout_Gerbers.zip`
+
+Upload the ZIP through Elecrow's PCB manufacturing web form. Elecrow does not
+currently document a public PCB order or Gerber-upload API, so no account
+credentials are required by this repository.
+
 ## Elecrow assembly BOM
 
 The initial production selection uses exact manufacturer part numbers and LCSC

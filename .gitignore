@@ -27,6 +27,11 @@ exports/
 *.step
 *.wrl
 !hardware/STPM32_Breakout/models/step/STPM32_VQFN24_4x4_EP2.45.step
+!hardware/STPM32_Breakout/gerber/
+!hardware/STPM32_Breakout/gerber/*.gbr
+!hardware/STPM32_Breakout/gerber/*.drl
+!hardware/STPM32_Breakout/gerber/*.gbrjob
+!hardware/STPM32_Breakout/gerber/*.zip
 
 # Python and OS files
 __pycache__/
