@@ -40,6 +40,8 @@ REQUIRED_SUFFIXES = (
     "-PTH.drl",
     "-NPTH.drl",
     "-job.gbrjob",
+    "-Front_Pos.csv",
+    "-Back_Pos.csv",
 )
 
 
@@ -127,6 +129,26 @@ def export(kicad_cli: str) -> None:
         "--excellon-separate-th",
         str(BOARD),
     )
+    for side, name in (
+        ("front", "STPM32_Breakout-Front_Pos.csv"),
+        ("back", "STPM32_Breakout-Back_Pos.csv"),
+    ):
+        run(
+            kicad_cli,
+            "pcb",
+            "export",
+            "pos",
+            "--output",
+            str(OUTPUT / name),
+            "--side",
+            side,
+            "--format",
+            "csv",
+            "--units",
+            "mm",
+            "--exclude-dnp",
+            str(BOARD),
+        )
 
 
 def verify_outputs() -> list[Path]:

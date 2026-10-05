@@ -80,8 +80,9 @@ python .\scripts\generate_stpm32_gerbers.py
 ```
 
 The script runs ERC and DRC before exporting the two copper layers, solder
-masks, front and rear silkscreens, front paste, board outline, and separate
-plated/non-plated Excellon drill files. Outputs are written to:
+masks, front and rear silkscreens, front paste, board outline, separate
+plated/non-plated Excellon drill files, and front/rear component position CSV
+files. Outputs are written to:
 
 - `hardware/STPM32_Breakout/gerber/`
 - `hardware/STPM32_Breakout/gerber/STPM32_Breakout_Gerbers.zip`
