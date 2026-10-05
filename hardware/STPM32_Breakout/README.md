@@ -48,6 +48,38 @@ INT1, LED1, LED2, and CLKOUT/ZCR are available on underside test pads.
 - ERC: zero violations.
 - DRC: zero violations and zero unconnected pads.
 
+## Elecrow assembly BOM
+
+The initial production selection uses exact manufacturer part numbers and LCSC
+catalog identifiers so Elecrow can quote turnkey sourcing without substituting
+parts from value-only descriptions. Precision 0.1%, 25 ppm/C resistors are
+specified for the voltage-divider ratios; the remaining resistors are 1%.
+Filter capacitors use X7R dielectric, crystal load capacitors use C0G, and the
+16 MHz crystal is specified for 12 pF load capacitance. The selected 2.4 ohm
+burden is suitable for development builds; use a lower-TCR burden selection
+before claiming calibration-grade temperature stability.
+
+Apply the sourcing metadata and regenerate the quote BOM with:
+
+```powershell
+python .\scripts\apply_stpm32_bom.py
+```
+
+The generated file is:
+
+- `manufacturing/STPM32_Breakout_Elecrow_BOM.csv`
+
+Assembly notes:
+
+- U1 and all other SMT parts are intended for Elecrow placement.
+- J1 is the only THT line and should be quoted separately; confirm that the
+  fitted pin protrusion is suitable for breadboard use.
+- TP1-TP4 and NT1 are PCB features, not purchasable components, and are
+  excluded from the schematic BOM and placement outputs.
+- Whatnick and OSHW logo footprints are excluded from BOM and placement files.
+- Verify live stock, pricing, and approved substitutions when requesting each
+  production quote.
+
 ## Safety
 
 The voltage input is for an isolated 9 VAC transformer secondary only. This

@@ -142,12 +142,16 @@ def add_logos(board: pcbnew.BOARD) -> None:
 
     whatnick.SetReference("LOGO_W")
     whatnick.SetPosition(point(23.70, 25.00))
+    whatnick.SetExcludedFromBOM(True)
+    whatnick.SetExcludedFromPosFiles(True)
     whatnick.Reference().SetVisible(False)
     whatnick.Value().SetVisible(False)
     board.Add(whatnick)
 
     oshw.SetReference("LOGO_OSHW")
     oshw.SetPosition(point(54.40, 25.00))
+    oshw.SetExcludedFromBOM(True)
+    oshw.SetExcludedFromPosFiles(True)
     oshw.Reference().SetVisible(False)
     oshw.Value().SetVisible(False)
     board.Add(oshw)
