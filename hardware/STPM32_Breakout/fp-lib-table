@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "STPM32_Logos")(type "KiCad")(uri "${KIPRJMOD}/logos.pretty")(options "")(descr "Project-local Whatnick and OSHW logos"))
+)
