@@ -203,6 +203,8 @@ def add_footprint(
     footprint.SetReference(reference)
     footprint.SetValue(value)
     footprint.SetPosition(point(x_mm, y_mm))
+    footprint.Reference().SetTextSize(point(0.8, 0.8))
+    footprint.Reference().SetTextThickness(q(0.2))
     board.Add(footprint)
     return footprint
 
@@ -228,6 +230,8 @@ def build_board(project_dir: Path, device: str, config: dict) -> None:
         )
         hole.SetExcludedFromBOM(True)
         hole.SetExcludedFromPosFiles(True)
+        hole.Reference().SetVisible(False)
+        hole.Value().SetVisible(False)
 
     add_footprint(
         board,
