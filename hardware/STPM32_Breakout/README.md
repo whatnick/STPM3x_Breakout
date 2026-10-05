@@ -42,6 +42,9 @@ INT1, LED1, LED2, and CLKOUT/ZCR are available on underside test pads.
 - No screw terminals, audio jacks, or direct-mains connector.
 - Routed two-layer PCB with separate AGND and DGND pours joined through the
   three-pad analog/reference/digital ground net tie.
+- Production silkscreen uses 0.8 x 0.8 mm component and signal labels with
+  0.2 mm stroke, project-local Whatnick and OSHW logos, and explicit revision
+  and build-date marking.
 - ERC: zero violations.
 - DRC: zero violations and zero unconnected pads.
 
