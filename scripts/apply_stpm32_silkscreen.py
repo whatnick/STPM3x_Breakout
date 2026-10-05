@@ -141,7 +141,7 @@ def add_logos(board: pcbnew.BOARD) -> None:
         raise RuntimeError("Unable to load project-local logo footprints")
 
     whatnick.SetReference("LOGO_W")
-    whatnick.SetPosition(point(23.70, 25.00))
+    whatnick.SetPosition(point(25.654, 26.924))
     whatnick.SetExcludedFromBOM(True)
     whatnick.SetExcludedFromPosFiles(True)
     whatnick.Reference().SetVisible(False)
@@ -149,21 +149,21 @@ def add_logos(board: pcbnew.BOARD) -> None:
     board.Add(whatnick)
 
     oshw.SetReference("LOGO_OSHW")
-    oshw.SetPosition(point(54.40, 25.00))
+    oshw.SetPosition(point(51.054, 27.940))
     oshw.SetExcludedFromBOM(True)
     oshw.SetExcludedFromPosFiles(True)
     oshw.Reference().SetVisible(False)
     oshw.Value().SetVisible(False)
     board.Add(oshw)
-    oshw.Flip(point(54.40, 25.00), False)
+    oshw.Flip(point(51.054, 27.940), False)
 
 
 def add_board_markings(board: pcbnew.BOARD) -> None:
-    add_text(board, "STPM32 ENERGY", 49.50, 21.55, pcbnew.F_SilkS, size=1.0)
-    add_text(board, "whatnick.com", 53.00, 23.50, pcbnew.F_SilkS)
+    add_text(board, "STPM32 ENERGY", 27.813, 29.591, pcbnew.F_SilkS, size=1.0)
+    add_text(board, "whatnick.com", 52.324, 24.003, pcbnew.F_SilkS)
 
-    add_text(board, "TAPR OHL 1.0", 25.20, 31.00, pcbnew.B_SilkS)
-    add_text(board, "NOT FOR DIRECT MAINS", 42.00, 21.20, pcbnew.B_SilkS)
+    add_text(board, "TAPR OHL 1.0", 26.289, 32.004, pcbnew.B_SilkS)
+    add_text(board, "NOT FOR DIRECT MAINS", 43.434, 22.098, pcbnew.B_SilkS)
     add_text(board, "9VAC + CT ONLY", 28.20, 46.75, pcbnew.B_SilkS)
     add_text(board, "v1.0 2026-10-05", 48.20, 46.75, pcbnew.B_SilkS)
 
