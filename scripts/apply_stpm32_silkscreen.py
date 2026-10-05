@@ -50,6 +50,7 @@ REFERENCE_POSITIONS: dict[str, tuple[float, float, float]] = {
     "R1": (34.95, 39.25, 90),
     "R2": (39.75, 39.25, 90),
     "R12": (44.80, 42.35, 0),
+    "SJ1": (52.10, 25.00, 90),
     "R3": (28.45, 41.65, 90),
     "R6": (31.25, 41.65, 90),
     "RB1": (39.10, 42.40, 0),
@@ -165,7 +166,9 @@ def add_board_markings(board: pcbnew.BOARD) -> None:
     add_text(board, "TAPR OHL 1.0", 26.289, 32.004, pcbnew.B_SilkS)
     add_text(board, "NOT FOR DIRECT MAINS", 43.434, 22.098, pcbnew.B_SilkS)
     add_text(board, "9VAC + CT ONLY", 43.180, 23.749, pcbnew.B_SilkS)
-    add_text(board, "v1.0 2026-10-05", 43.053, 25.400, pcbnew.B_SilkS)
+    add_text(board, "v1.1 2026-10-05", 43.053, 25.400, pcbnew.B_SilkS)
+    add_text(board, "UART", 53.20, 22.40, pcbnew.B_SilkS)
+    add_text(board, "SPI", 56.70, 26.30, pcbnew.B_SilkS, angle=90)
 
     for x, label in HEADER_LABELS:
         add_text(board, label, x, 41.75, pcbnew.B_SilkS, angle=90)
@@ -185,6 +188,7 @@ def main() -> None:
     place_references(board)
     add_logos(board)
     add_board_markings(board)
+    pcbnew.ZONE_FILLER(board).Fill(board.Zones())
     pcbnew.SaveBoard(str(BOARD_PATH), board)
     print(f"Updated {BOARD_PATH}")
 

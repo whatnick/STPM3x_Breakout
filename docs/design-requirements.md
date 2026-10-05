@@ -18,8 +18,13 @@
 - 16 MHz crystal or an external clock satisfying the datasheet limits.
 - EN exposed with a defined pull state and reset access.
 - Interface selection is explicit:
-  - SCS low at selection time: SPI.
-  - SCS high at selection time: UART.
+  - STPM32 supports SPI and UART; it does not support I2C.
+  - SCS low at power-up: SPI.
+  - SCS high at power-up: UART.
+  - A three-pad selector biases SCS through a resistor rather than hard-strapping
+    it, preserving normal SPI chip-select operation.
+  - The manufactured default bridges DGND to the bias resistor for SPI; UART
+    requires cutting that bridge and connecting the bias resistor to +3V3.
 - SYN, LED1, LED2, INT1, available INT2, and CLKOUT/ZCR remain accessible.
 - Digital interface signals use a grouped 2.54 mm development header or
   equivalent compact connector.
