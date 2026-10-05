@@ -164,8 +164,8 @@ def add_board_markings(board: pcbnew.BOARD) -> None:
 
     add_text(board, "TAPR OHL 1.0", 26.289, 32.004, pcbnew.B_SilkS)
     add_text(board, "NOT FOR DIRECT MAINS", 43.434, 22.098, pcbnew.B_SilkS)
-    add_text(board, "9VAC + CT ONLY", 28.20, 46.75, pcbnew.B_SilkS)
-    add_text(board, "v1.0 2026-10-05", 48.20, 46.75, pcbnew.B_SilkS)
+    add_text(board, "9VAC + CT ONLY", 43.180, 23.749, pcbnew.B_SilkS)
+    add_text(board, "v1.0 2026-10-05", 43.053, 25.400, pcbnew.B_SilkS)
 
     for x, label in HEADER_LABELS:
         add_text(board, label, x, 41.75, pcbnew.B_SilkS, angle=90)
