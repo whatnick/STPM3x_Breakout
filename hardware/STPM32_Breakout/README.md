@@ -3,6 +3,12 @@
 Compact KiCad 10 development board for the single-voltage, single-current
 STMicroelectronics STPM32 energy-metering ASIC.
 
+## 3D renders
+
+![Populated STPM32 breakout top render](renders/STPM32_Breakout_top.png)
+
+![STPM32 breakout bottom render](renders/STPM32_Breakout_bottom.png)
+
 ## Implemented front end
 
 - **Current input:** 100 A:50 mA current-output CT.
@@ -45,8 +51,23 @@ INT1, LED1, LED2, and CLKOUT/ZCR are available on underside test pads.
 - Production silkscreen uses 0.8 x 0.8 mm component and signal labels with
   0.2 mm stroke, project-local Whatnick and OSHW logos, and explicit revision
   and build-date marking.
+- U1 uses the project-local
+  `models/step/STPM32_VQFN24_4x4_EP2.45.step` model. It matches the 4 x 4 mm,
+  1.0 mm-high, 0.5 mm-pitch VQFN-24 envelope and nominal 2.45 x 2.45 mm
+  exposed pad instead of relying on the missing similarly named KiCad library
+  model. Geometry and orientation were cross-checked against ST's
+  `STPM32.STEP` vendor model dated 2024-01-25; the vendor file is not
+  redistributed.
 - ERC: zero violations.
 - DRC: zero violations and zero unconnected pads.
+
+Regenerate the model and committed renders with:
+
+```powershell
+python -m pip install cadquery
+python .\scripts\create_stpm32_qfn_step.py
+python .\scripts\render_stpm32.py
+```
 
 ## Elecrow assembly BOM
 
