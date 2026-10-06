@@ -82,7 +82,6 @@ def place_references(board: pcbnew.BOARD) -> None:
         "J1": (72.5, 56.4, 90),
         "SW1": (71.8, 36.5, 90),
         "Y1": (42.0, 27.5, 0),
-        "NT1": (61.8, 44.5, 90),
         "C1": (37.0, 27.8, 0),
         "C2": (37.0, 31.2, 0),
         "C3": (37.0, 35.3, 0),
@@ -100,7 +99,7 @@ def place_references(board: pcbnew.BOARD) -> None:
     for footprint in board.GetFootprints():
         reference = footprint.GetReference()
         field = footprint.Reference()
-        if reference.startswith(("H", "LOGO", "TP")) or reference == "SJ1":
+        if reference.startswith(("H", "LOGO", "TP")) or reference in {"NT1", "SJ1"}:
             field.SetVisible(False)
             continue
         x = pcbnew.ToMM(footprint.GetPosition().x)

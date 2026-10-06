@@ -19,7 +19,8 @@ two-current experiments sharing one voltage reference.
 - Voltage divider: symmetric 200 kohm / 2.49 kohm legs.
 - Voltage filters: 1 kohm series resistors and 33 nF capacitors.
 - Clock: 16 MHz crystal.
-- Grounding: separate GNDA and DGND pours joined through NT1.
+- Grounding: separate GNDA and DGND pours joined through NT1. NT1 is a copper
+  net tie; no component is fitted there.
 
 This is not an isolated mains-input board. Connect only isolated low-voltage
 sources and follow applicable electrical-safety practices.
