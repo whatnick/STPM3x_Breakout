@@ -54,7 +54,7 @@ Use connector-side suffixes such as `_J` and IC-side signal names such as
 
 ## Mechanical formats
 
-The STPM33 and STPM34 reference scaffolds use:
+The implemented STPM33 board and STPM34 reference scaffold use:
 
 - 55 x 40 mm bench-board envelope.
 - 5.08 mm rounded corners.
@@ -92,6 +92,13 @@ The implemented STPM32 board uses the compact Whatnick breakout format:
 ### STPM33
 
 - One voltage and two current channels.
+- Implemented for two 100 A:50 mA CTs and one isolated 9 VAC transformer.
+- Each CT uses a 2.4 ohm differential burden and approximately 4.8 kHz input
+  filtering.
+- The voltage channel uses symmetric 200 kohm / 2.49 kohm dividers and
+  approximately 4.8 kHz filtering.
+- A 1x14 development header exposes both analog inputs and the host interface.
+- Five underside test pads expose INT1, INT2, LED1, LED2, and CLKOUT/ZCR.
 - Target: phase/neutral monitoring, tamper experiments, or two current sensors
   sharing one voltage channel.
 

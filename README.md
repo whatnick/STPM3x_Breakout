@@ -71,12 +71,13 @@ These boards are intended as accessible bench-development platforms:
 - Readable safety labels and accessible test points.
 - Open KiCad 10 source and project-local STPM3x symbols.
 
-The STPM32 variant now implements a complete compact front end for a
+The STPM32 variant implements a complete compact front end for a
 100 A:50 mA current-output CT and an isolated 9 VAC transformer secondary. It
 uses a single 1x12 breadboard header, underside test pads, separate analog and
-digital ground pours, and no field-wiring connectors. The STPM33 and STPM34
-projects remain larger reference scaffolds until their sensor combinations are
-selected.
+digital ground pours, and no field-wiring connectors. The STPM33 variant is
+also complete, using the same isolated 9 VAC input with two 100 A:50 mA CT
+channels, a 1x14 development header, five underside test pads, and a 55 x 40 mm
+bench-board envelope. STPM34 remains a reference scaffold.
 
 ## Repository contents
 
