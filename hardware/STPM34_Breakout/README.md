@@ -92,6 +92,32 @@ drills, Gerber job data, front/rear position CSVs, and the upload ZIP are
 written to `gerber`. The BOM contains 17 grouped unique parts and 44 fitted
 components.
 
+## Breadboard bench scene
+
+![STPM34 isolated low-voltage bench setup](bench/STPM34_Bench_Setup.png)
+
+The FreeCAD and Blender scene illustrates a safe low-voltage demonstration:
+an isolated 9 VAC barrel adapter feeds the voltage input and a 9 VAC lamp,
+while a YHDC current-transformer clamp surrounds one lamp conductor and
+connects through a stereo-jack breakout. The composition is an original
+render inspired by common Whatnick bench practice and the supplied Tindie
+reference photograph; it is not a literal reconstruction of that photograph.
+
+Generate the editable FreeCAD model, intermediate STEP/OBJ geometry, Blender
+scene, and final PNG from the repository root:
+
+```powershell
+& "C:\Program Files\FreeCAD 0.19\bin\FreeCADCmd.exe" .\scripts\build_stpm34_bench_freecad.py
+& "C:\Program Files\Blender Foundation\Blender 5.2\blender.exe" --background --python .\scripts\render_stpm34_bench_blender.py
+```
+
+The checked-in deliverables are the `.FCStd`, `.blend`, and `.png` files.
+Intermediate STEP and OBJ exports are regenerated locally and ignored by Git.
+
+**Safety:** the scene represents an isolated 9 VAC test circuit only. Never
+connect mains voltage directly to a breadboard, the STPM34 analog header, or
+the rendered barrel/stereo breakout arrangement.
+
 ## Validation
 
 KiCad 10 ERC and DRC are mandatory before fabrication export. The Gerber

@@ -46,6 +46,10 @@ exports/
 !hardware/STPM34_Breakout/gerber/*.gbrjob
 !hardware/STPM34_Breakout/gerber/*.csv
 !hardware/STPM34_Breakout/gerber/*.zip
+hardware/STPM34_Breakout/bench/obj/
+hardware/STPM34_Breakout/bench/*.obj
+hardware/STPM34_Breakout/bench/*.blend1
+hardware/STPM34_Breakout/bench/*.FCStd1
 
 # Python and OS files
 __pycache__/
