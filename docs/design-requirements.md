@@ -54,9 +54,9 @@ Use connector-side suffixes such as `_J` and IC-side signal names such as
 
 ## Mechanical formats
 
-The implemented STPM33 board and STPM34 reference scaffold use:
+The STPM33 and STPM34 bench boards use:
 
-- 55 x 40 mm bench-board envelope.
+- A rounded bench-board envelope sized for the implemented channel count.
 - 5.08 mm rounded corners.
 - Four M2 NPTH holes, 2.2 mm drill.
 - Metering IC near the center.
@@ -105,6 +105,16 @@ The implemented STPM32 board uses the compact Whatnick breakout format:
 ### STPM34
 
 - Two voltage and two current channels.
+- Implemented for two 100 A:50 mA CTs and two isolated 9 VAC transformers.
+- Each CT uses a 2.4 ohm differential burden and approximately 4.8 kHz input
+  filtering.
+- Each voltage channel uses symmetric 200 kohm / 2.49 kohm dividers and
+  approximately 4.8 kHz filtering.
+- Separate 1x8 analog and 1x10 host headers keep field and digital wiring
+  grouped.
+- Three underside test pads expose LED1, LED2, and CLKOUT/ZCR; INT1 and INT2
+  are exposed on the host header.
+- The implemented board envelope is 75 x 50 mm with 5.08 mm rounded corners.
 - Target: dual-circuit, split-phase, or two-phase development.
 - It is not a complete three-phase meter by itself.
 

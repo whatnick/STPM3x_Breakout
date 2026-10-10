@@ -77,7 +77,9 @@ uses a single 1x12 breadboard header, underside test pads, separate analog and
 digital ground pours, and no field-wiring connectors. The STPM33 variant is
 also complete, using the same isolated 9 VAC input with two 100 A:50 mA CT
 channels, a 1x14 development header, five underside test pads, and a 55 x 40 mm
-bench-board envelope. STPM34 remains a reference scaffold.
+bench-board envelope. The STPM34 variant is complete on a 75 x 50 mm bench
+board with two isolated 9 VAC channels, two 100 A:50 mA CT channels, separate
+analog and host headers, and three underside test pads.
 
 ## Repository contents
 
